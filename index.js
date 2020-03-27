@@ -14,4 +14,4 @@ Ext["Fluids"] = (function () {
 		"back": back,
 	};
 
-}()};
+}());
