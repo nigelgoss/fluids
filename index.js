@@ -1,5 +1,16 @@
 var $fluids = (function () {
 
-  return function () { alert("Fluids"); };
+	function forward () {
+		back();
+	};
+	
+	function back () {
+		alert("Fluids");
+	};
+	
+	return {
+		"forward": forward,
+		"back": back,
+	};
 
 }()};
