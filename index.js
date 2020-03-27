@@ -1,4 +1,5 @@
-var $fluids = (function () {
+if (Ext === undefined) var Ext = {};
+Ext["Fluids"] = (function () {
 
 	function forward () {
 		back();
