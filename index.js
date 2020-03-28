@@ -1,8 +1,12 @@
 if (Ext === undefined) var Ext = {};
 Ext["Fluids"] = (function () {
 
-	function forward () {
-		alert("Fluids");
+	var store = {
+		"data": {}
+	};
+	
+	function forward ($in) {
+		store.data = $in;
 		back();
 	};
 	
@@ -10,9 +14,12 @@ Ext["Fluids"] = (function () {
 		
 	};
 	
+	var save = null;
+	
 	return {
 		"forward": forward,
 		"back": back,
+		"save": save,
 	};
 
 }());
