@@ -1,5 +1,6 @@
 (function () {
 
+var $data = [];
 var elements = {};
 	
 var section = document.createElement("section");
