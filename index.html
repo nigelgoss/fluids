@@ -3,9 +3,12 @@
 <html lang="en" style="height:100%; display:flex; font-family:Arial;">
 	
 	<head>
+		<script>var $ = {};</script>
 		<script src="summary.js" defer></script>
-		
-		<script defer></script>
+		<script defer>
+			var el = document.querySelector("main")
+			el.parentNode.replaceChild($.summary, el);
+		</script>
 	</head>
 	
 	<body style="margin:0; flex:1 1 auto; display:flex; flex-direction:column;">
