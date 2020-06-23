@@ -9,8 +9,9 @@ var elements = {};
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 const IO = [	
-	["Oral", "IV Fluids", "NG Feed", "Other"],
-	["Urine - Continent", "Urine - Incontinent", "Urine - Catheterised", "Gastric", "Drain", "Stoma", "Other"]
+	["Oral", "IV Fluids", "NG Feed", "Other", "Total"],
+	["Urine - Continent", "Urine - Incontinent", "Urine - Catheterised", "Gastric", "Drain", "Stoma", "Other", "Total"],
+	["Balance"]
 ];
 	
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
@@ -20,6 +21,8 @@ section.style.flex = "1 1 auto";
 section.style.display = "grid";
 section.style.gridTemplateRows = "min-content min-content min-content";
 
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+	
 	var div = document.createElement("div"); section.appendChild(div);
 	div.style.gridArea = "1/1/2/1";
 	
@@ -49,9 +52,11 @@ section.style.gridTemplateRows = "min-content min-content min-content";
 
 		el.inputDate = document.createElement("input"); div.appendChild(el.inputDate);
 		el.inputDate.type = "date";
+	
+	// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "1/2/2/" + IO[0].length + 2;
+	div.style.gridArea = "1/2/2/" + (IO[0].length + 2);
 	div.style.textAlign = "center";
 	div.textContent = "Input";
 
