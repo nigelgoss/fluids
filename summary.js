@@ -1,127 +1,9 @@
+(function () {
 
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-
-var $data = [];
-
-var $date = new Date(); $date.setHours(0,0,0,0);
-
-var sections = {};
-
-var elements = {};
-
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-
-var $saveVars = {};
-
-function record ($d) {
-	label.textContent = JSON.stringify($d);
-	comment.value = "";
-	$saveVars =  $d;
-	main.textContent = "";
-	main.appendChild(sections["Record"]);
-};
-
-var section = document.createElement("section"); sections["Record"] = section;
+var section = document.createElement("section");
 section.style.flex = "1 1 auto";
-section.style.display = "flex";
-section.style.flexDirection = "column";
-
-var select = document.createElement("select"); section.appendChild(select);
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-var option = document.createElement("option"); select.appendChild(option); option.textContent = "Now";
-
-var label = document.createElement("div"); section.appendChild(label);
-
-var comment = document.createElement("textarea"); section.appendChild(comment); 
-
-var button = document.createElement("button"); section.appendChild(button);
-button.textContent = "Save";
-button.onpointerdown = function () {
-
-	var $dt = new Date(); $dt.setMinutes(0, 0, 0);
-
-	$data.push({
-		"Created": new Date(),
-		"DateTime": $dt,
-		"Direction": $saveVars["Direction"],
-		"Type": $saveVars["Type"],
-		"Volume": 1,
-		"Comment": comment.value,
-		"Username": "gosn1fm"
-	});
-	
-	build();
-
-	main.textContent = "";
-	main.appendChild(sections["Grid"]);
-	
-};
-
-var button = document.createElement("button"); section.appendChild(button);
-button.textContent = "Cancel";
-button.onpointerdown = function () {
-	main.textContent = "";
-	main.appendChild(sections["Grid"]);
-};
-
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-
-var section = document.createElement("section"); sections["List"] = section;
-section.style.flex = "1 1 auto";
-section.style.display = "flex";
-section.style.flexDirection = "column";
-section.style.overflow = "auto";
-
-var button = document.createElement("button"); section.appendChild(button);
-button.textContent = "Cancel";
-button.onpointerdown = function () {
-	main.textContent = "";
-	main.appendChild(sections["Grid"]);
-};
-
-var table2 = document.createElement("table"); section.appendChild(table2);
-table2.style.width = "100%";
-table2.style.borderCollapse = "collapse";
-
-var thead = document.createElement("thead"); table2.appendChild(thead);
-var tr = document.createElement("tr"); thead.appendChild(tr);
-var td = document.createElement("td"); tr.appendChild(td); td.textContent = "DateTime";
-var td = document.createElement("td"); tr.appendChild(td); td.textContent = "Direction";
-var td = document.createElement("td"); tr.appendChild(td); td.textContent = "Type";
-var td = document.createElement("td"); tr.appendChild(td); td.textContent = "Volume";
-var td = document.createElement("td"); tr.appendChild(td); td.textContent = "Recorded";
-var td = document.createElement("td"); tr.appendChild(td); td.textContent = "Username";
-var td = document.createElement("td"); tr.appendChild(td);
-
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-
-var section = document.createElement("section"); sections["Grid"] = section;
-section.style.flex = "1 1 auto";
-section.style.display = "grid"; /* IE11 */ section.style.display = "-ms-Grid";
-section.style.gridTemplateRows = "min-content min-content min-content"; /* IE11 */ section.style.msGridRows = "min-content min-content min-content 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr"; /* IE11 */ section.style.msGridColumns = "1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr";
+section.style.display = "grid";
+section.style.gridTemplateRows = "min-content min-content min-content";
 
 var $grid = [
 
@@ -361,8 +243,6 @@ $grid.forEach(function ($x) {
 
 function build () {
 	
-	//table2.querySelectorAll("tbody").forEach(function ($v) { $v.parentElement.removeChild($v); });
-	
 	$calc = {};
 	
 	$data.forEach(function ($x, $i) {
@@ -429,8 +309,10 @@ function build () {
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
-var main = document.querySelector("main");
-main.textContent = "";
-main.appendChild(sections["Grid"]);
+$.summary = {
+	"load": load
+};
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+}());
