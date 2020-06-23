@@ -21,7 +21,7 @@ section.style.display = "grid";
 section.style.gridTemplateRows = "min-content min-content min-content";
 
 	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "1/1/3/1";
+	div.style.gridArea = "1/1/2/1";
 	
 		var button = document.createElement("button"); div.appendChild(button);
 		button.textContent = "<";
@@ -45,13 +45,13 @@ section.style.gridTemplateRows = "min-content min-content min-content";
 		};
 
 	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "3/1/4/1";
+	div.style.gridArea = "2/1/3/1";
 
 		el.inputDate = document.createElement("input"); div.appendChild(el.inputDate);
 		el.inputDate.type = "date";
 
 	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "1/2/2/7";
+	div.style.gridArea = "1/2/2/" + IO[0].length + 2;
 	div.style.textAlign = "center";
 	div.textContent = "Input";
 
@@ -85,6 +85,8 @@ section.style.gridTemplateRows = "min-content min-content min-content";
 
 	// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
+$grid = [];
+	
 [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23].forEach(function ($v) {
 
 	$x = $v;
