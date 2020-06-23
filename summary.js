@@ -136,6 +136,38 @@ section.style.gridTemplateColumns = "repeat(15, 1fr)";
 		if (["AM", "PM"].indexOf($v) > -1) div.style.backgroundColor = "yellow";
 		div.textContent = $v;
 	});
+	
+	
+	
+	
+var COLS = {
+	"Input": ["Oral", "IV Fluids", "NG Feed", "Other"],
+	"Output": ["Urine Continent", "Urine Incontinent", "Urine Catheterised", "Gastric", "Drain", "Stoma", "Other"]
+};
+
+var ROWS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "AM", 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, "PM"];
+
+function cX ($xy, $id) {
+	var div = document.createElement("div"); section.appendChild(div);
+	div.style.gridArea = [$xy[0], $xy[1], $xy[0]+1, $xy[1]+1].join("/");
+	div.textContent = $id.join("|");
+}
+	
+ROWS.forEach(function ($r, $ri) {
+	var $ci = 0;
+	Object.keys(COLS).forEach(function ($io) {
+		COLS[$io].forEach(function ($v) {
+			cX( [$ri + 2, $ci++ + 2], [$io, $v, $r] );
+		});
+		cX( [$ri + 2, $ci++ + 2], [$io, "Total", $r] );
+	});
+	cX( [$ri + 2, $ci++ + 2], ["Balance", $r] );
+});
+	
+	
+	
+	
+	
 /*
 ["Input|Oral", "Input|IV Fluids", "Input|NG Feed", "Input|Other", "Input|Total", "Output|Urine - Continent", "Output|Urine - Incontinent", "Output|Urine - Catheterised", "Output|Gastric", "Output|Drain", "Output|Stoma", "Output|Other", "Output|Total", "Balance"].forEach(function ($cv, $ci) {
 	["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "AM", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "PM"].forEach(function ($rv, $ri) {
@@ -163,20 +195,6 @@ for (var r = 4; r <= 29; r++) {
 	};
 };
 
-$grid.forEach(function ($x) {
-
-	var div = $x[4]();
-	
-	div.style.gridArea = [$x[0], $x[1], $x[2], $x[3]].join("/");
-	div.style.border = "1px solid red";
-		
-	div.style.display = "flex";
-	div.style.alignItems = "center";
-	div.style.justifyContent = "center";
-	
-	section.appendChild(div);
-		
-});
 */
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
