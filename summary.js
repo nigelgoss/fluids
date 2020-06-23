@@ -236,10 +236,7 @@ $grid.forEach(function ($x) {
 	var div = $x[4]();
 	
 	div.style.gridArea = [$x[0], $x[1], $x[2], $x[3]].join("/");
-	//div.style.gridRowStart = $x[0];
-	//div.style.gridColumnStart = $x[1];
-	//div.style.gridRowEnd = $x[2];
-	//div.style.gridColumnEnd = $x[3];
+	div.style.border = "1px solid red";
 		
 	div.style.display = "flex";
 	div.style.alignItems = "center";
