@@ -58,7 +58,6 @@ section.style.gridTemplateRows = "min-content min-content min-content";
 	div.style.gridArea = "2/3/4/4";
 	div.textContent = "IV Fluids";
 
-	[2, 4, 4, 5, function () {
 	var div = document.createElement("div"); section.appendChild(div);
 	div.style.gridArea = "2/4/4/5";
 	div.textContent = "NG Feed";
