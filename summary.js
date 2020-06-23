@@ -145,9 +145,9 @@ var COLS = {
 var ROWS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "AM", 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, "PM"];
 
 function createCell ($rc, $id) {
+	$id = $id.join("|").replace(/ /g, "");
 	var div = document.createElement("div"); section.appendChild(div);
 	div.style.gridArea = [$rc[0], $rc[1], $rc[0]+1, $rc[1]+1].join("/");
-	div.classList.add($id);
 	if ($id.indexOf("|Total|") > -1) div.style.backgroundColor = "palegreen";
 	if ($id.indexOf("|Balance|") > -1) div.style.backgroundColor = "lightblue";
 	if ($id.indexOf("|AM|") > -1 || $id.indexOf("|PM|") > -1) div.style.backgroundColor = "yellow";
@@ -157,11 +157,11 @@ ROWS.forEach(function ($r, $ri) {
 	var $ci = 0;
 	Object.keys(COLS).forEach(function ($io) {
 		COLS[$io].forEach(function ($v) {
-			createCell( [$ri + 3, $ci++ + 2], $io+"-"+$v.replace(/ /g, "")+"-"+$r );
+			createCell( [$ri + 3, $ci++ + 2], [$io, $v, $r] );
 		});
-		createCell( [$ri + 3, $ci++ + 2], $io+"-Total-"+$r );
+		createCell( [$ri + 3, $ci++ + 2], [$io, "Total", $r] );
 	});
-	createCell( [$ri + 3, $ci++ + 2], "Balance-"+$r );
+	createCell( [$ri + 3, $ci++ + 2], ["Balance", $r] );
 });
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
