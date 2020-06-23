@@ -45,33 +45,22 @@ section.style.gridTemplateRows = "min-content min-content min-content";
 		el.inputDate = document.createElement("input"); div.appendChild(el.inputDate);
 		el.inputDate.type = "date";
 
-	
+	var div = document.createElement("div"); section.appendChild(div);
+	div.style.gridArea = "1/2/2/7";
+	div.textContent = "Input";
+
+	var div = document.createElement("div"); section.appendChild(div);
+	div.style.gridArea = "2/2/4/3";
+	div.textContent = "Oral";
+
+	var div = document.createElement("div"); section.appendChild(div);
+	div.style.gridArea = "2/3/4/4";
+	div.textContent = "IV Fluids";
+
 	
 	
 var $grid = [
-	
-	[1, 2, 2, 7, function () {
-	var div = document.createElement("div");
-	div.textContent = "Input";
-	return div;
-	}],
-	
-	[2, 2, 4, 3, function () {
-	var div = document.createElement("div");
-	var button = document.createElement("button"); div.appendChild(button);
-	button.textContent = "Oral";
-	button.onpointerdown = function () { record({"Direction":"Input", "Type":"Oral"}); };
-	return div;
-	}],
-	
-	[2, 3, 4, 4, function () {
-	var div = document.createElement("div");
-	var button = document.createElement("button"); div.appendChild(button);
-	button.textContent = "IV Fluids";
-	button.onpointerdown = function () { record({"Direction":"Input", "Type":"IV Fluids"}); };
-	return div;
-	}],
-	
+
 	[2, 4, 4, 5, function () {
 	var div = document.createElement("div");
 	var button = document.createElement("button"); div.appendChild(button);
