@@ -15,7 +15,7 @@ section.style.flex = "1 1 auto";
 section.style.display = "grid";
 section.style.gridTemplateRows = "min-content min-content min-content";
 
-	var div = document.createElement("div");
+	var div = document.createElement("div"); section.appendChild(div);
 	div.style.gridArea = "1/1/3/1";
 	
 		var button = document.createElement("button"); div.appendChild(button);
