@@ -157,11 +157,11 @@ ROWS.forEach(function ($r, $ri) {
 	var $ci = 0;
 	Object.keys(COLS).forEach(function ($io) {
 		COLS[$io].forEach(function ($v) {
-			cX( [$ri + 2, $ci++ + 3], [$io, $v, $r] );
+			cX( [$ri + 1, $ci++ + 2], [$io, $v, $r] );
 		});
-		cX( [$ri + 2, $ci++ + 3], [$io, "Total", $r] );
+		cX( [$ri + 1, $ci++ + 2], [$io, "Total", $r] );
 	});
-	cX( [$ri + 2, $ci++ + 3], ["Balance", $r] );
+	cX( [$ri + 1, $ci++ + 2], ["Balance", $r] );
 });
 	
 	
