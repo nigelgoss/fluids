@@ -7,40 +7,39 @@ var el = {};
 var elements = {};
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	
 var section = document.createElement("section"); $.summary = section;
 section.style.flex = "1 1 auto";
 section.style.display = "grid";
 section.style.gridTemplateRows = "min-content min-content min-content";
 
-var $grid = [
-
-	[1, 1, 3, 1, function () {
 	var div = document.createElement("div");
+	div.style.gridArea = "1/1/3/1";
 	
-	var button = document.createElement("button"); div.appendChild(button);
-	button.textContent = "<";
-	button.onpointerdown = function () {
-		el.inputDate.valueAsDate = new Date(el.inputDate.valueAsDate.setDate(el.inputDate.valueAsDate.getDate() - 1));
-		build();
-	};
+		var button = document.createElement("button"); div.appendChild(button);
+		button.textContent = "<";
+		button.onpointerdown = function () {
+			el.inputDate.valueAsDate = new Date(el.inputDate.valueAsDate.setDate(el.inputDate.valueAsDate.getDate() - 1));
+			build();
+		};
+
+		el.buttonToday = document.createElement("button"); div.appendChild(el.buttonToday);
+		el.buttonToday.textContent = "Today";
+		el.buttonToday.onpointerdown = function () {
+			el.inputDate.valueAsDate = new Date();
+			build();
+		};
+
+		var button = document.createElement("button"); div.appendChild(button);
+		button.textContent = ">";
+		button.onpointerdown = function () {
+			el.inputDate.valueAsDate = new Date(el.inputDate.valueAsDate.setDate(el.inputDate.valueAsDate.getDate() + 1));
+			build();
+		};
 	
-	el.buttonToday = document.createElement("button"); div.appendChild(el.buttonToday);
-	el.buttonToday.textContent = "X";
-	el.buttonToday.onpointerdown = function () {
-		el.inputDate.valueAsDate = new Date();
-		build();
-	};
-	
-	var button = document.createElement("button"); div.appendChild(button);
-	button.textContent = ">";
-	button.onpointerdown = function () {
-		el.inputDate.valueAsDate = new Date(el.inputDate.valueAsDate.setDate(el.inputDate.valueAsDate.getDate() + 1));
-		build();
-	};
-	
-	return div;
-	}],
+var $grid = [
 
 	[3, 1, 4, 1, function () {
 	var div = document.createElement("div");
@@ -234,10 +233,11 @@ $grid.forEach(function ($x) {
 
 	var div = $x[4]();
 	
-	div.style.gridRowStart = $x[0]; /* IE11 */ div.style.msGridRow = $x[0];
-    div.style.gridColumnStart = $x[1]; /* IE11 */ div.style.msGridColumn = $x[1];
-    div.style.gridRowEnd = $x[2]; /* IE11 */ div.style.msGridRowSpan = $x[2] - $x[0];
-    div.style.gridColumnEnd = $x[3]; /* IE11 */ div.style.msGridColumnSpan = $x[3] -$x[1];
+	div.style.gridArea = [$x[0], $x[1], $x[2], $x[3]].join("/");
+	//div.style.gridRowStart = $x[0];
+	//div.style.gridColumnStart = $x[1];
+	//div.style.gridRowEnd = $x[2];
+	//div.style.gridColumnEnd = $x[3];
 		
 	div.style.display = "flex";
 	div.style.alignItems = "center";
