@@ -154,8 +154,8 @@ var $grid = [
 
 	[3, 1, 4, 1, function () {
 	var div = document.createElement("div");
-	var select = document.createElement("select"); div.appendChild(select);
-	var option = document.createElement("option"); select.appendChild(option); option.textContent = new Date().toDateString();
+	var input = document.createElement("input"); div.appendChild(input);
+	input.type = "date";
 	return div;
 	}],
 	
