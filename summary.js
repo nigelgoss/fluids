@@ -16,6 +16,10 @@ const IO = [
 	["Urine - Continent", "Urine - Incontinent", "Urine - Catheterised", "Gastric", "Drain", "Stoma", "Other"]
 ];
 
+const HOURS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "AM", 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, "PM"]
+	
+var grid = [];
+
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 var section = document.createElement("section"); $.summary = section;
@@ -91,36 +95,14 @@ section.style.gridTemplateRows = "min-content min-content min-content";
 	div.textContent = "Balance";
 
 	// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-
-$grid = [];
 	
-[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23].forEach(function ($v) {
-
-	$x = $v;
-	if ($v > 11) $x += 1;
-
-	$grid.push(
-		[4+$x, 1, 5+$x, 2, function () {
-		var div = document.createElement("div");
+	HOURS.forEach(function ($v, $i) {
+		var div = document.createElement("div"); section.appendChild(div);
+		div.style.gridArea = (x+3) + "/1/" + (x+4) +"/2";
+		if (["AM", "PM"].indexOf($v) > -1) div.style.backgroundColor = "yellow";
 		div.textContent = $v;
-		return div;
-		}]
-	);
-
-});	
-
-["AM", "PM"].forEach(function ($v, $i) {
-	if ($i == 1) $i = 13;
-	$grid.push(
-		[16+$i, 1, 17+$i, 2, function () {
-		var div = document.createElement("div");
-		div.style.backgroundColor = "yellow";
-		div.textContent = $v;
-		return div;
-		}]
-	);
-});
-
+	});
+/*
 ["Input|Oral", "Input|IV Fluids", "Input|NG Feed", "Input|Other", "Input|Total", "Output|Urine - Continent", "Output|Urine - Incontinent", "Output|Urine - Catheterised", "Output|Gastric", "Output|Drain", "Output|Stoma", "Output|Other", "Output|Total", "Balance"].forEach(function ($cv, $ci) {
 	["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "AM", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "PM"].forEach(function ($rv, $ri) {
 		
@@ -161,7 +143,7 @@ $grid.forEach(function ($x) {
 	section.appendChild(div);
 		
 });
-
+*/
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 function build () {
