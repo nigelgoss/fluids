@@ -15,7 +15,7 @@ const IO = [
 
 const HOURS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "AM", 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, "PM"]
 	
-var grid = [];
+var grid = {};
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
@@ -160,6 +160,7 @@ var ROWS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "AM", 12, 13, 14, 15, 16, 17, 
 function createCell ($rc, $id) {
 	$id = "|" + $id.join("|").replace(/ /g, "") + "|";
 	var div = document.createElement("div"); section.appendChild(div);
+	grid[$id] = div;
 	div.style.gridArea = [$rc[0], $rc[1], $rc[0]+1, $rc[1]+1].join("/");
 	div.style.border = "1px solid #CCCCCC";
 	if ($id.indexOf("|Total|") > -1) div.style.backgroundColor = "palegreen";
@@ -178,6 +179,8 @@ ROWS.forEach(function ($r, $ri) {
 	createCell( [$ri + 3, $ci++ + 2], ["Balance", $r] );
 });
 
+Object.keys(grid).forEach(function ($v) { grid[$v].textContent = "X"; });
+	
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 function build () {
