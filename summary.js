@@ -25,6 +25,7 @@ var grid = [];
 var section = document.createElement("section"); $.summary = section;
 section.style.flex = "1 1 auto";
 section.style.display = "grid";
+section.style.gridTemplateColumns = "repeat(15, 1fr)";
 section.style.gridTemplateRows = "min-content min-content min-content";
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
