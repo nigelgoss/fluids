@@ -98,7 +98,7 @@ section.style.gridTemplateRows = "min-content min-content min-content";
 	
 	HOURS.forEach(function ($v, $i) {
 		var div = document.createElement("div"); section.appendChild(div);
-		div.style.gridArea = (x+3) + "/1/" + (x+4) +"/2";
+		div.style.gridArea = ($i+3) + "/1/" + ($i+4) +"/2";
 		if (["AM", "PM"].indexOf($v) > -1) div.style.backgroundColor = "yellow";
 		div.textContent = $v;
 	});
