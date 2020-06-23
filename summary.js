@@ -58,7 +58,7 @@ section.style.gridTemplateRows = "min-content min-content min-content";
 	// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "1/2/2/" + (IO[0].length + 2);
+	div.style.gridArea = "1/2/2/" + (IO[0].length + 3);
 	div.style.textAlign = "center";
 	div.textContent = "Input";
 
@@ -73,12 +73,12 @@ section.style.gridTemplateRows = "min-content min-content min-content";
 	div.textContent = "Total";
 	
 	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "1/" + (IO[0].length + 2) + "/2/" + (IO[0].length + IO[1].length + 3);
+	div.style.gridArea = "1/" + (IO[0].length + 3) + "/2/" + (IO[0].length + IO[1].length + 4);
 	div.textContent = "Output";
 
 	IO[1].forEach(function ($v, $i) {
 		var div = document.createElement("div"); section.appendChild(div);
-		div.style.gridArea = "2/" + (IO[0].length + IO[1].length + $i + 1) +"/4/" + (IO[0].length + IO[1].length + $i + 2);
+		div.style.gridArea = "2/" + (IO[0].length + IO[1].length + 4 + $i) +"/4/" + (IO[0].length + IO[1].length + 5 + $i);
 		div.textContent = $v;
 	});
 	
