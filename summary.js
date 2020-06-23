@@ -57,37 +57,28 @@ section.style.gridTemplateRows = "min-content min-content min-content";
 	div.style.gridArea = "2/3/4/4";
 	div.textContent = "IV Fluids";
 
+	[2, 4, 4, 5, function () {
+	var div = document.createElement("div"); section.appendChild(div);
+	div.style.gridArea = "2/4/4/5";
+	div.textContent = "NG Feed";
 	
+	var div = document.createElement("div"); section.appendChild(div);
+	div.style.gridArea = "2/5/4/6";
+	div.textContent = "Other";
+	
+	var div = document.createElement("div"); section.appendChild(div);
+	div.style.gridArea = "2/6/4/6";
+	div.textContent = "Total";
+	
+	var div = document.createElement("div"); section.appendChild(div);
+	div.style.gridArea = "1/7/2/15";
+	div.textContent = "Output";
+
+
 	
 var $grid = [
 
-	[2, 4, 4, 5, function () {
-	var div = document.createElement("div");
-	var button = document.createElement("button"); div.appendChild(button);
-	button.textContent = "NG Feed";
-	button.onpointerdown = function () { record({"Direction":"Input", "Type":"NG Feed"}); };
-	return div;
-	}],
 	
-	[2, 5, 4, 6, function () {
-	var div = document.createElement("div");
-	var button = document.createElement("button"); div.appendChild(button);
-	button.textContent = "Other";
-	button.onpointerdown = function () { record({"Direction":"Input", "Type":"Other"}); };
-	return div;
-	}],
-	
-	[2, 6, 4, 6, function () {
-	var div = document.createElement("div");
-	div.textContent = "Total";
-	return div;
-	}],
-	
-	[1, 7, 2, 15, function () {
-	var div = document.createElement("div");
-	div.textContent = "Output";
-	return div;
-	}],
 	
 	[2, 7, 3, 10, function () {
 	var div = document.createElement("div");
