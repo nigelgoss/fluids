@@ -1,5 +1,7 @@
 (function () {
 
+var elements = {};
+	
 var section = document.createElement("section");
 section.style.flex = "1 1 auto";
 section.style.display = "grid";
