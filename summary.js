@@ -87,11 +87,11 @@ section.style.gridTemplateRows = "min-content min-content min-content";
 	});
 	
 	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "2/" + (IO[0].length + IO[1].length + 4) + "/4/" + (IO[0].length + IO[1].length + 5);
+	div.style.gridArea = "2/" + (IO[0].length + IO[1].length + 3) + "/4/" + (IO[0].length + IO[1].length + 4);
 	div.textContent = "Total";
 
 	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "1/15/4/16";
+	div.style.gridArea = "1/" + (IO[0].length + IO[1].length + 4) + "/3/" + (IO[0].length + IO[1].length + 5);
 	div.textContent = "Balance";
 
 	// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
