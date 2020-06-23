@@ -20,21 +20,21 @@ var $grid = [
 	var button = document.createElement("button"); div.appendChild(button);
 	button.textContent = "<";
 	button.onpointerdown = function () {
-		$date.setDate($date.getDate() - 1);
+		inputDate.valueAsDate = new Date(inputDate.valueAsDate.setDate(inputDate.valueAsDate.getDate() - 1));
 		build();
 	};
 	
 	var buttonToday = document.createElement("button"); div.appendChild(buttonToday);
 	buttonToday.textContent = "X";
 	buttonToday.onpointerdown = function () {
-		$date = new Date(); $date.setHours(0,0,0,0);
+		inputDate.valueAsDate = new Date();
 		build();
 	};
 	
 	var button = document.createElement("button"); div.appendChild(button);
 	button.textContent = ">";
 	button.onpointerdown = function () {
-		$date.setDate($date.getDate() + 1);
+		inputDate.valueAsDate = new Date(inputDate.valueAsDate.setDate(inputDate.valueAsDate.getDate() + 1));
 		build();
 	};
 	
@@ -43,9 +43,8 @@ var $grid = [
 
 	[3, 1, 4, 1, function () {
 	var div = document.createElement("div");
-	var input = document.createElement("input"); div.appendChild(input);
-	input.type = "date";
-	input.valueAsDate = new Date();
+	var inputDate = document.createElement("input"); div.appendChild(inputDate);
+	inputDate.type = "date";
 	return div;
 	}],
 	
@@ -313,7 +312,9 @@ function build () {
 		elements[$v].textContent = $calc[$v];
 	});
 	
-}; build();
+};
+	
+buttonToday.onpointerdown();
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
