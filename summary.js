@@ -83,7 +83,7 @@ section.style.gridTemplateRows = "min-content min-content min-content";
 	});
 	
 	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "2/14/4/15";
+	div.style.gridArea = "2/" + (IO[0].length + IO[1].length + 4) + "/4/" + (IO[0].length + IO[1].length + 5);
 	div.textContent = "Total";
 
 	var div = document.createElement("div"); section.appendChild(div);
