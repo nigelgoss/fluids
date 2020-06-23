@@ -24,9 +24,9 @@ var $grid = [
 		build();
 	};
 	
-	var buttonToday = document.createElement("button"); div.appendChild(buttonToday);
-	buttonToday.textContent = "X";
-	buttonToday.onpointerdown = function () {
+	el.buttonToday = document.createElement("button"); div.appendChild(el.buttonToday);
+	el.buttonToday.textContent = "X";
+	el.buttonToday.onpointerdown = function () {
 		el.inputDate.valueAsDate = new Date();
 		build();
 	};
@@ -314,7 +314,7 @@ function build () {
 	
 };
 	
-buttonToday.onpointerdown();
+el.buttonToday.onpointerdown();
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
