@@ -63,13 +63,17 @@ section.style.gridTemplateColumns = "repeat(15, 1fr)";
 
 	var div = document.createElement("div"); section.appendChild(div);
 	div.style.gridArea = "1/2/2/" + (IO[0].length + 3);
+	div.style.display = "flex";
 	div.style.textAlign = "center";
+	div.style.alignItems = "center";
+	div.style.justifyContent = "center";
 	div.textContent = "Input";
 
 	IO[0].forEach(function ($v, $i) {
 		var div = document.createElement("div"); section.appendChild(div);
 		div.style.gridArea = "2/" + ($i + 2) +"/3/" + ($i + 3);
-		div.style.display = "flex";	
+		div.style.display = "flex";
+		div.style.textAlign = "center";
 		div.style.alignItems = "center";
 		div.style.justifyContent = "center";
 		div.textContent = $v;
@@ -77,24 +81,44 @@ section.style.gridTemplateColumns = "repeat(15, 1fr)";
 	
 	var div = document.createElement("div"); section.appendChild(div);
 	div.style.gridArea = "2/6/3/6";
+	div.style.display = "flex";
+	div.style.textAlign = "center";
+	div.style.alignItems = "center";
+	div.style.justifyContent = "center";
 	div.textContent = "Total";
 	
 	var div = document.createElement("div"); section.appendChild(div);
 	div.style.gridArea = "1/" + (IO[0].length + 3) + "/2/" + (IO[0].length + IO[1].length + 4);
+	div.style.display = "flex";
+	div.style.textAlign = "center";
+	div.style.alignItems = "center";
+	div.style.justifyContent = "center";
 	div.textContent = "Output";
 
 	IO[1].forEach(function ($v, $i) {
 		var div = document.createElement("div"); section.appendChild(div);
 		div.style.gridArea = "2/" + (IO[0].length + 3 + $i) +"/3/" + (IO[0].length + 4 + $i);
+		div.style.display = "flex";
+		div.style.textAlign = "center";
+		div.style.alignItems = "center";
+		div.style.justifyContent = "center";
 		div.textContent = $v;
 	});
 	
 	var div = document.createElement("div"); section.appendChild(div);
 	div.style.gridArea = "2/" + (IO[0].length + IO[1].length + 3) + "/3/" + (IO[0].length + IO[1].length + 4);
+	div.style.display = "flex";
+	div.style.textAlign = "center";
+	div.style.alignItems = "center";
+	div.style.justifyContent = "center";
 	div.textContent = "Total";
 
 	var div = document.createElement("div"); section.appendChild(div);
 	div.style.gridArea = "1/" + (IO[0].length + IO[1].length + 4) + "/3/" + (IO[0].length + IO[1].length + 5);
+	div.style.display = "flex";
+	div.style.textAlign = "center";
+	div.style.alignItems = "center";
+	div.style.justifyContent = "center";
 	div.textContent = "Balance";
 
 	// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
@@ -102,6 +126,10 @@ section.style.gridTemplateColumns = "repeat(15, 1fr)";
 	HOURS.forEach(function ($v, $i) {
 		var div = document.createElement("div"); section.appendChild(div);
 		div.style.gridArea = ($i+3) + "/1/" + ($i+4) +"/2";
+		div.style.display = "flex";
+		div.style.textAlign = "center";
+		div.style.alignItems = "center";
+		div.style.justifyContent = "center";
 		if (["AM", "PM"].indexOf($v) > -1) div.style.backgroundColor = "yellow";
 		div.textContent = $v;
 	});
