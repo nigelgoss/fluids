@@ -8,6 +8,11 @@ var elements = {};
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
+const IO = [	
+	["Oral", "IV Fluids", "NG Feed", "Other"],
+	["Urine - Continent", "Urine - Incontinent", "Urine - Catheterised", "Gastric", "Drain", "Stoma", "Other"]
+];
+	
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	
 var section = document.createElement("section"); $.summary = section;
@@ -50,21 +55,11 @@ section.style.gridTemplateRows = "min-content min-content min-content";
 	div.style.textAlign = "center";
 	div.textContent = "Input";
 
-	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "2/2/4/3";
-	div.textContent = "Oral";
-
-	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "2/3/4/4";
-	div.textContent = "IV Fluids";
-
-	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "2/4/4/5";
-	div.textContent = "NG Feed";
-	
-	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "2/5/4/6";
-	div.textContent = "Other";
+	IO[0].forEach(function ($v, $i) {
+		var div = document.createElement("div"); section.appendChild(div);
+		div.style.gridArea = "2/" + $i+1 +"/4/" + $i+2;
+		div.textContent = $v;
+	});
 	
 	var div = document.createElement("div"); section.appendChild(div);
 	div.style.gridArea = "2/6/4/6";
@@ -74,89 +69,21 @@ section.style.gridTemplateRows = "min-content min-content min-content";
 	div.style.gridArea = "1/7/2/15";
 	div.textContent = "Output";
 
-
+	IO[1].forEach(function ($v, $i) {
+		var div = document.createElement("div"); section.appendChild(div);
+		div.style.gridArea = "2/" + IO[1].length+$i+1 +"/4/" + IO[1].length+$i+2;
+		div.textContent = $v;
+	});
 	
-var $grid = [
-
-	
-	
-	[2, 7, 3, 10, function () {
-	var div = document.createElement("div");
-	div.textContent = "Urine";
-	return div;
-	}],
-	
-	[3, 7, 4, 8, function () {
-	var div = document.createElement("div");
-	var button = document.createElement("button"); div.appendChild(button);
-	button.textContent = "Continent";
-	button.onpointerdown = function () { record({"Direction":"Output", "Type":"Urine - Continent"}); };
-	return div;
-	}],
-	
-	[3, 8, 4, 9, function () {
-	var div = document.createElement("div");
-	var button = document.createElement("button"); div.appendChild(button);
-	button.textContent = "Incontinent";
-	button.onpointerdown = function () { record({"Direction":"Output", "Type":"Urine - Incontinent"}); };
-	return div;
-	}],
-	
-	[3, 9, 4, 10, function () {
-	var div = document.createElement("div");
-	var button = document.createElement("button"); div.appendChild(button);
-	button.textContent = "Catheterised";
-	button.onpointerdown = function () { record({"Direction":"Output", "Type":"Urine - Catheterised"}); };
-	return div;
-	}],
-	
-	[2, 10, 4, 11, function () {
-	var div = document.createElement("div");
-	var button = document.createElement("button"); div.appendChild(button);
-	button.textContent = "Gastric";
-	button.onpointerdown = function () { record({"Direction":"Output", "Type":"Gastric"}); };
-	return div;
-	}],
-	
-	[2, 11, 4, 12, function () {
-	var div = document.createElement("div");
-	var button = document.createElement("button"); div.appendChild(button);
-	button.textContent = "Drain";
-	button.onpointerdown = function () { record({"Direction":"Output", "Type":"Drain"}); };
-	return div;
-	}],
-	
-	[2, 12, 4, 13, function () {
-	var div = document.createElement("div");
-	var button = document.createElement("button"); div.appendChild(button);
-	button.textContent = "Stoma";
-	button.onpointerdown = function () { record({"Direction":"Output", "Type":"Stoma"}); };
-	return div;
-	}],
-	
-	[2, 13, 4, 14, function () {
-	var div = document.createElement("div");
-	var button = document.createElement("button"); div.appendChild(button);
-	button.textContent = "Other";
-	button.onpointerdown = function () { record({"Direction":"Output", "Type":"Other"}); };
-	return div;
-	}],
-	
-	[2, 14, 4, 15, function () {
-	var div = document.createElement("div");
+	var div = document.createElement("div"); section.appendChild(div);
+	div.style.gridArea = "2/14/4/15";
 	div.textContent = "Total";
-	return div;
-	}],
-	
-	[1, 15, 4, 16, function () {
-	var div = document.createElement("div");
+
+	var div = document.createElement("div"); section.appendChild(div);
+	div.style.gridArea = "1/15/4/16";
 	div.textContent = "Balance";
-	return div;
-	}],
-	
+
 	// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-	
-];
 
 [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23].forEach(function ($v) {
 
