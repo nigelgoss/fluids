@@ -85,7 +85,7 @@ section.style.gridTemplateColumns = "repeat(15, 1fr)";
 	div.style.textAlign = "center";
 	div.style.alignItems = "center";
 	div.style.justifyContent = "center";
-	div.style.backgroundColor = "green";
+	div.style.backgroundColor = "lightgreen";
 	div.textContent = "Total";
 	
 	var div = document.createElement("div"); section.appendChild(div);
