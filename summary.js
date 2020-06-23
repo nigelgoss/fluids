@@ -29,6 +29,9 @@ section.style.gridGap = "1px";
 	
 	var div = document.createElement("div"); section.appendChild(div);
 	div.style.gridArea = "1/1/2/1";
+	div.style.display = "flex";
+	div.style.alignItems = "center";
+	div.style.justifyContent = "center";
 	
 		var button = document.createElement("button"); div.appendChild(button);
 		button.textContent = "<";
@@ -116,7 +119,6 @@ section.style.gridGap = "1px";
 	var div = document.createElement("div"); section.appendChild(div);
 	div.style.gridArea = "1/" + (IO[0].length + IO[1].length + 4) + "/2/" + (IO[0].length + IO[1].length + 5);
 	div.style.display = "flex";
-	div.style.textAlign = "center";
 	div.style.alignItems = "center";
 	div.style.justifyContent = "center";
 	
