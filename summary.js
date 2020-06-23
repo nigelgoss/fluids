@@ -2,9 +2,9 @@
 
 var style = document.createElement("style"); document.head.appendChild(style);
 style.textContent = "section > div { border:0 solid blue; border-width:0 1px 1px 0; }";	
-	
+
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-	
+
 var $data = [];
 var el = {};
 var elements = {};
@@ -15,9 +15,9 @@ const IO = [
 	["Oral", "IV Fluids", "NG Feed", "Other"],
 	["Urine - Continent", "Urine - Incontinent", "Urine - Catheterised", "Gastric", "Drain", "Stoma", "Other"]
 ];
-	
+
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-	
+
 var section = document.createElement("section"); $.summary = section;
 section.style.flex = "1 1 auto";
 section.style.display = "grid";
@@ -78,7 +78,7 @@ section.style.gridTemplateRows = "min-content min-content min-content";
 
 	IO[1].forEach(function ($v, $i) {
 		var div = document.createElement("div"); section.appendChild(div);
-		div.style.gridArea = "2/" + (IO[0].length + IO[1].length + 4 + $i) +"/4/" + (IO[0].length + IO[1].length + 5 + $i);
+		div.style.gridArea = "2/" + (IO[0].length + IO[1].length + 3 + $i) +"/4/" + (IO[0].length + IO[1].length + 4 + $i);
 		div.textContent = $v;
 	});
 	
