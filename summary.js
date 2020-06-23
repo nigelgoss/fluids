@@ -1,8 +1,5 @@
 (function () {
 
-var style = document.createElement("style"); document.head.appendChild(style);
-style.textContent = "section > div { border:0 solid blue; border-width:0 1px 1px 0; }\n.total { background-color:palegreen; }";	
-
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 var $data = [];
@@ -26,6 +23,7 @@ var section = document.createElement("section"); $.summary = section;
 section.style.flex = "1 1 auto";
 section.style.display = "grid";
 section.style.gridTemplateColumns = "repeat(15, 1fr)";
+section.style.gridGap = "1px";
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	
@@ -148,6 +146,7 @@ function createCell ($rc, $id) {
 	$id = "|" + $id.join("|").replace(/ /g, "") + "|";
 	var div = document.createElement("div"); section.appendChild(div);
 	div.style.gridArea = [$rc[0], $rc[1], $rc[0]+1, $rc[1]+1].join("/");
+	div.style.border = "1px solid #CCCCCC";
 	if ($id.indexOf("|Total|") > -1) div.style.backgroundColor = "palegreen";
 	if ($id.indexOf("|Balance|") > -1) div.style.backgroundColor = "lightblue";
 	if ($id.indexOf("|AM|") > -1 || $id.indexOf("|PM|") > -1) div.style.backgroundColor = "yellow";
