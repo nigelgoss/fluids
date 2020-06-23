@@ -3,7 +3,7 @@
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	
 var $data = [];
-var elements = {};
+var el = {};
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	
@@ -20,21 +20,21 @@ var $grid = [
 	var button = document.createElement("button"); div.appendChild(button);
 	button.textContent = "<";
 	button.onpointerdown = function () {
-		inputDate.valueAsDate = new Date(inputDate.valueAsDate.setDate(inputDate.valueAsDate.getDate() - 1));
+		el.inputDate.valueAsDate = new Date(el.inputDate.valueAsDate.setDate(el.inputDate.valueAsDate.getDate() - 1));
 		build();
 	};
 	
 	var buttonToday = document.createElement("button"); div.appendChild(buttonToday);
 	buttonToday.textContent = "X";
 	buttonToday.onpointerdown = function () {
-		inputDate.valueAsDate = new Date();
+		el.inputDate.valueAsDate = new Date();
 		build();
 	};
 	
 	var button = document.createElement("button"); div.appendChild(button);
 	button.textContent = ">";
 	button.onpointerdown = function () {
-		inputDate.valueAsDate = new Date(inputDate.valueAsDate.setDate(inputDate.valueAsDate.getDate() + 1));
+		el.inputDate.valueAsDate = new Date(el.inputDate.valueAsDate.setDate(el.inputDate.valueAsDate.getDate() + 1));
 		build();
 	};
 	
@@ -43,8 +43,8 @@ var $grid = [
 
 	[3, 1, 4, 1, function () {
 	var div = document.createElement("div");
-	var inputDate = document.createElement("input"); div.appendChild(inputDate);
-	inputDate.type = "date";
+	el.inputDate = document.createElement("input"); div.appendChild(el.inputDate);
+	el.inputDate.type = "date";
 	return div;
 	}],
 	
