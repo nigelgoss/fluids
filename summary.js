@@ -38,15 +38,17 @@ section.style.gridTemplateRows = "min-content min-content min-content";
 			el.inputDate.valueAsDate = new Date(el.inputDate.valueAsDate.setDate(el.inputDate.valueAsDate.getDate() + 1));
 			build();
 		};
+
+	var div = document.createElement("div"); section.appendChild(div);
+	div.style.gridArea = "3/1/4/1";
+
+		el.inputDate = document.createElement("input"); div.appendChild(el.inputDate);
+		el.inputDate.type = "date";
+
+	
+	
 	
 var $grid = [
-
-	[3, 1, 4, 1, function () {
-	var div = document.createElement("div");
-	el.inputDate = document.createElement("input"); div.appendChild(el.inputDate);
-	el.inputDate.type = "date";
-	return div;
-	}],
 	
 	[1, 2, 2, 7, function () {
 	var div = document.createElement("div");
