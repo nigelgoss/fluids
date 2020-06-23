@@ -78,7 +78,7 @@ section.style.gridTemplateRows = "min-content min-content min-content";
 
 	IO[1].forEach(function ($v, $i) {
 		var div = document.createElement("div"); section.appendChild(div);
-		div.style.gridArea = "2/" + (IO[0].length + IO[1].length + 3 + $i) +"/4/" + (IO[0].length + IO[1].length + 4 + $i);
+		div.style.gridArea = "2/" + (IO[0].length + 3 + $i) +"/4/" + (IO[0].length + 4 + $i);
 		div.textContent = $v;
 	});
 	
