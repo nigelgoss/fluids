@@ -9,9 +9,8 @@ var elements = {};
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 const IO = [	
-	["Oral", "IV Fluids", "NG Feed", "Other", "Total"],
-	["Urine - Continent", "Urine - Incontinent", "Urine - Catheterised", "Gastric", "Drain", "Stoma", "Other", "Total"],
-	["Balance"]
+	["Oral", "IV Fluids", "NG Feed", "Other"],
+	["Urine - Continent", "Urine - Incontinent", "Urine - Catheterised", "Gastric", "Drain", "Stoma", "Other"]
 ];
 	
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
@@ -71,7 +70,7 @@ section.style.gridTemplateRows = "min-content min-content min-content";
 	div.textContent = "Total";
 	
 	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "1/7/2/15";
+	div.style.gridArea = "1/" + (IO[0].length + 2) + "/2/" + (IO[0].length + IO[1].length + 3);
 	div.textContent = "Output";
 
 	IO[1].forEach(function ($v, $i) {
