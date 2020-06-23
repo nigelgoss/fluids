@@ -3,12 +3,17 @@
 <html lang="en" style="height:100%; display:flex; font-family:Arial;">
 	
 	<head>
-		<script>var $ = {};</script>
-		<script src="summary.js" defer></script>
-		<script defer>
-			var el = document.querySelector("main")
-			el.parentNode.replaceChild($.summary, el);
+		
+		<script>
+			var $ = {};
+			window.addEventListener("load", function () {
+				var el = document.querySelector("main")
+				el.parentNode.replaceChild($.summary, el);
+			});
 		</script>
+		
+		<script src="summary.js" defer></script>
+		
 	</head>
 	
 	<body style="margin:0; flex:1 1 auto; display:flex; flex-direction:column;">
