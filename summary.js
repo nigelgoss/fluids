@@ -1,7 +1,7 @@
 (function () {
 
 var style = document.createElement("style"); document.head.appendChild(style);
-style.textContent = "section > div { border:0px solid blue; border:0 1px 1px 0; }";	
+style.textContent = "section > div { border:0 solid blue; border-width:0 1px 1px 0; }";	
 	
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	
