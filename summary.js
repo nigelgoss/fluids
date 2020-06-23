@@ -1,7 +1,7 @@
 (function () {
 
 var style = document.createElement("style"); document.head.appendChild(style);
-style.textContent = "section > div { border:0 solid blue; border-width:0 1px 1px 0; }";	
+style.textContent = "section > div { border:0 solid blue; border-width:0 1px 1px 0; }\n.total { background-color:palegreen; }";	
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
@@ -137,9 +137,6 @@ section.style.gridTemplateColumns = "repeat(15, 1fr)";
 		div.textContent = $v;
 	});
 	
-	
-	
-	
 var COLS = {
 	"Input": ["Oral", "IV Fluids", "NG Feed", "Other"],
 	"Output": ["Urine Continent", "Urine Incontinent", "Urine Catheterised", "Gastric", "Drain", "Stoma", "Other"]
@@ -159,43 +156,11 @@ ROWS.forEach(function ($r, $ri) {
 		COLS[$io].forEach(function ($v) {
 			createCell( [$ri + 3, $ci++ + 2], $r, $io+"-"+$v );
 		});
-		createCell( [$ri + 3, $ci++ + 2], $r, $io+"-"+Total" );
+		createCell( [$ri + 3, $ci++ + 2], $r, $io+"-Total" );
 	});
 	createCell( [$ri + 3, $ci++ + 2], $r, "Balance" );
 });
-	
-	
-	
-	
-	
-/*
-["Input|Oral", "Input|IV Fluids", "Input|NG Feed", "Input|Other", "Input|Total", "Output|Urine - Continent", "Output|Urine - Incontinent", "Output|Urine - Catheterised", "Output|Gastric", "Output|Drain", "Output|Stoma", "Output|Other", "Output|Total", "Balance"].forEach(function ($cv, $ci) {
-	["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "AM", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "PM"].forEach(function ($rv, $ri) {
-		
-		$grid.push(
-			[$ri+4, $ci+2, $ri+5, $ci+3, function () {
-			var div = document.createElement("div"); elements[[$cv, $rv].join("|")] = div;
-			if (["Input|Total", "Output|Total"].indexOf($cv) > -1) div.style.backgroundColor = "palegreen";
-			if (["Balance"].indexOf($cv) > -1) div.style.backgroundColor = "palegreen";
-			if (["AM", "PM"].indexOf($rv) > -1) div.style.backgroundColor = "yellow";
-			div.onpointerdown = function () {
-				main.textContent = "";
-				main.appendChild(sections["List"]);
-			};
-			return div;
-			}]
-		);
 
-	});
-});
-
-for (var r = 4; r <= 29; r++) {
-	for (var c = 2; c <= 15; c++) {
-		
-	};
-};
-
-*/
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 function build () {
