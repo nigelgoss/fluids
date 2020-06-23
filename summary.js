@@ -154,7 +154,7 @@ ROWS.forEach(function ($r, $ri) {
 	var $ci = 0;
 	Object.keys(COLS).forEach(function ($io) {
 		COLS[$io].forEach(function ($v) {
-			createCell( [$ri + 3, $ci++ + 2], $r, $io+"-"+$v );
+			createCell( [$ri + 3, $ci++ + 2], $r, $io+"-"+$v.replace(/ /g, ""); );
 		});
 		createCell( [$ri + 3, $ci++ + 2], $r, $io+"-Total" );
 	});
