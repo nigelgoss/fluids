@@ -83,7 +83,7 @@ section.style.gridGap = "1px";
 	div.style.textAlign = "center";
 	div.style.alignItems = "center";
 	div.style.justifyContent = "center";
-	div.style.backgroundColor = "lightgreen";
+	div.style.backgroundColor = "palegreen";
 	div.textContent = "Total";
 	
 	var div = document.createElement("div"); section.appendChild(div);
@@ -110,11 +110,24 @@ section.style.gridGap = "1px";
 	div.style.textAlign = "center";
 	div.style.alignItems = "center";
 	div.style.justifyContent = "center";
-	div.style.backgroundColor = "green";
+	div.style.backgroundColor = "palegreen";
 	div.textContent = "Total";
 
 	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "1/" + (IO[0].length + IO[1].length + 4) + "/3/" + (IO[0].length + IO[1].length + 5);
+	div.style.gridArea = "1/" + (IO[0].length + IO[1].length + 4) + "/2/" + (IO[0].length + IO[1].length + 5);
+	div.style.display = "flex";
+	div.style.textAlign = "center";
+	div.style.alignItems = "center";
+	div.style.justifyContent = "center";
+	
+		var button = document.createElement("button"); div.appendChild(button);
+		button.textContent = "+ Add";
+		button.onpointerdown = function () {
+			alert(1);
+		};
+	
+	var div = document.createElement("div"); section.appendChild(div);
+	div.style.gridArea = "2/" + (IO[0].length + IO[1].length + 4) + "/3/" + (IO[0].length + IO[1].length + 5);
 	div.style.display = "flex";
 	div.style.textAlign = "center";
 	div.style.alignItems = "center";
