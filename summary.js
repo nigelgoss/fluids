@@ -3,7 +3,7 @@
 var $data = [];
 var elements = {};
 	
-var section = document.createElement("section");
+var section = document.createElement("section"); $.summary = section;
 section.style.flex = "1 1 auto";
 section.style.display = "grid";
 section.style.gridTemplateRows = "min-content min-content min-content";
@@ -309,12 +309,6 @@ function build () {
 	});
 	
 }; build();
-
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-
-$.summary = {
-	"load": load
-};
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
