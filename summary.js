@@ -47,6 +47,7 @@ section.style.gridTemplateRows = "min-content min-content min-content";
 
 	var div = document.createElement("div"); section.appendChild(div);
 	div.style.gridArea = "1/2/2/7";
+	div.style.textAlign = "center";
 	div.textContent = "Input";
 
 	var div = document.createElement("div"); section.appendChild(div);
