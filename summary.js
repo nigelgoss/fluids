@@ -191,7 +191,7 @@ function build () {
 	
 		if ($v.DT.substring(0, 10) !== el.inputDate.value) return;
 		
-		var lbl = "|" + [$v.IO, $v.Type, $v.DT.substring(11, 13)].join("|") + "|";
+		var lbl = "|" + [$v.IO, $v.Type, parseInt($v.DT.substring(11, 13))].join("|") + "|";
 		if (calc[lbl] === undefined) calc[lbl] = 0;
 		calc[lbl] += $v.Value;
 		
