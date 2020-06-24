@@ -196,9 +196,9 @@ function build () {
 			[$v.IO, $v.Type, parseInt($v.DT.substring(11, 13))],
 			[$v.IO, "Total", parseInt($v.DT.substring(11, 13))],
 			["Balance", parseInt($v.DT.substring(11, 13))],
-			[$v.IO, $v.Type, ["AM", "PM"][parseInt($v.DT.substring(11, 13)) % 12]],
-			[$v.IO, "Total", ["AM", "PM"][parseInt($v.DT.substring(11, 13)) % 12]],
-			["Balance", ["AM", "PM"][parseInt($v.DT.substring(11, 13)) % 12]]
+			[$v.IO, $v.Type, ["AM", "PM"][Math.floor(parseInt($v.DT.substring(11, 13)) / 12)]],
+			[$v.IO, "Total", ["AM", "PM"][Math.floor(parseInt($v.DT.substring(11, 13)) / 12)]],
+			["Balance", ["AM", "PM"][Math.floor(parseInt($v.DT.substring(11, 13)) / 12)]]
 		].forEach(function ($x) {
 			var lbl = "|" + $x.join("|") + "|";
 			if (calc[lbl] === undefined) calc[lbl] = 0;
