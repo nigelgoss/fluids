@@ -161,6 +161,10 @@ function createCell ($rc, $id) {
 	grid[$id] = div;
 	div.style.gridArea = [$rc[0], $rc[1], $rc[0]+1, $rc[1]+1].join("/");
 	div.style.border = "1px solid #CCCCCC";
+	div.style.display = "flex";
+	div.style.textAlign = "center";
+	div.style.alignItems = "center";
+	div.style.justifyContent = "center";
 	if ($id.indexOf("|Total|") > -1) div.style.backgroundColor = "palegreen";
 	if ($id.indexOf("|Balance|") > -1) div.style.backgroundColor = "lightblue";
 	if ($id.indexOf("|AM|") > -1 || $id.indexOf("|PM|") > -1) div.style.backgroundColor = "yellow";
