@@ -17,8 +17,8 @@ const HOURS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "AM", 12, 13, 14, 15, 16, 1
 var el = {};
 var grid = {};
 var data = [
-	{"DT":"2020-10-24 11:00", "IO":"Input", "Type":"Oral", "Value":50},
-	{"DT":"2020-10-24 09:00", "IO":"Input", "Type":"Oral", "Value":75},
+	{"DT":"2020-06-24 11:00", "IO":"Input", "Type":"Oral", "Value":50},
+	{"DT":"2020-06-24 09:00", "IO":"Input", "Type":"Oral", "Value":75},
 ];
 	
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
@@ -196,8 +196,6 @@ function build () {
 		calc[lbl] += $v.Value;
 		
 	});
-	
-	console.log(calc);
 	
 	Object.keys(grid).forEach(function ($v) { grid[$v].textContent = calc[$v] ?? "??"; });
 	
