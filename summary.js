@@ -187,8 +187,6 @@ function build () {
 	
 	var calc = {};
 	
-	Object.keys(grid).forEach(function ($v) { grid[$v].textContent = "-"; });
-	
 	data.forEach(function ($v, $i) {
 	
 		if ($v.DT.substring(0, 10) !== el.inputDate.value) return;
@@ -199,7 +197,7 @@ function build () {
 		
 	});
 	
-	Object.keys($calc).forEach(function ($v) { grid[$v].textContent = calc[$v]; });
+	Object.keys(grid).forEach(function ($v) { grid[$v].textContent = calc[$v] ?? "??"; });
 	
 		/*
 		[
