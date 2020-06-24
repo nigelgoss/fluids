@@ -197,6 +197,8 @@ function build () {
 		
 	});
 	
+	console.log(calc);
+	
 	Object.keys(grid).forEach(function ($v) { grid[$v].textContent = calc[$v] ?? "??"; });
 	
 		/*
