@@ -16,7 +16,10 @@ const HOURS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "AM", 12, 13, 14, 15, 16, 1
 
 var el = {};
 var grid = {};
-var data = [];
+var data = [
+	{"DT":"2020-10-24 11:00", "IO":"Input", "Type":"Oral", "Value":50},
+	{"DT":"2020-10-24 09:00", "IO":"Input", "Type":"Oral", "Value":75},
+];
 	
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
@@ -181,15 +184,24 @@ HOURS.forEach(function ($r, $ri) {
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 function build () {
-
+	
+	var calc = {};
+	
 	Object.keys(grid).forEach(function ($v) { grid[$v].textContent = "-"; });
 	
-	$calc = {};
+	data.forEach(function ($v, $i) {
 	
-	data.forEach(function ($x, $i) {
+		if ($v.DT.substring(0, 10) !== el.inputDate.value) return;
+		
+		var lbl = "|" + [$v.IO, $v.Type, $v.DT.substring(11, 13)].join("|") + "|";
+		if (calc[lbl] === undefined) calc[lbl] = 0;
+		calc[lbl] += $v.Value;
+		
+	});
 	
-		if (new Date().toDateString() !== $x.DateTime.toDateString()) return;
+	Object.keys($calc).forEach(function ($v) { grid[$v].textContent = calc[$v]; });
 	
+		/*
 		[
 			[$x.Direction, $x.Type, $x.DateTime.getHours()].join("|"),
 			[$x.Direction, "Total", $x.DateTime.getHours()].join("|"),
@@ -201,50 +213,7 @@ function build () {
 			if ($calc[$v] === undefined) $calc[$v] = 0;
 			$calc[$v] += $x.Volume * (($x.Direction == "Input") ? 1 : -1);
 		});
-		
-		var tbody = document.createElement("tbody"); table2.appendChild(tbody);
-		tbody.style.border = "3px solid grey";
-		
-		var tr = document.createElement("tr"); tbody.appendChild(tr);
-		
-		var td = document.createElement("td"); tr.appendChild(td);
-		td.textContent = new Date($x.DateTime).toDateString() + " " + new Date($x.DateTime).toTimeString().substr(0, 8);
-		
-		var td = document.createElement("td"); tr.appendChild(td);
-		td.textContent = $x.Direction;
-		
-		var td = document.createElement("td"); tr.appendChild(td);
-		td.textContent = $x.Type;
-		
-		var td = document.createElement("td"); tr.appendChild(td);
-		td.textContent = $x.Volume;
-		
-		var td = document.createElement("td"); tr.appendChild(td);
-		td.textContent = new Date($x.Created).toDateString() + " " + new Date($x.Created).toTimeString().substr(0, 8);
-		
-		var td = document.createElement("td"); tr.appendChild(td);
-		td.textContent = $x.Username;
-		
-		var td = document.createElement("td"); tr.appendChild(td);
-		td.textContent = "X";
-		td.onpointerdown = function () {
-			if (confirm("Sure?") == false) return; 
-			$data.splice($i, 1);
-			build();
-		};
-		
-		if ($x.Comment !== "") {
-			var tr = document.createElement("tr"); tbody.appendChild(tr);
-			var td = document.createElement("td"); tr.appendChild(td);
-				td.colSpan = 7;
-			td.textContent = "Comment: " + $x.Comment;
-		};
-
-	});
-	
-	Object.keys($calc).forEach(function ($v) {
-		elements[$v].textContent = $calc[$v];
-	});
+		*/
 	
 };
 	
