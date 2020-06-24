@@ -1,9 +1,4 @@
 (function () {
-
-$.add = function ($json) {
-	data.push($json);
-	build();
-};
 	
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
@@ -131,7 +126,8 @@ div.style.justifyContent = "center";
 	var button = document.createElement("button"); div.appendChild(button);
 	button.textContent = "+ Add";
 	button.onpointerdown = function () {
-		alert(1);
+		data.push(JSON.parse(prompt("Data")));
+		build();
 	};
 
 var div = document.createElement("div"); section.appendChild(div);
