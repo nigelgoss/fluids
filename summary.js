@@ -1,10 +1,10 @@
 (function () {
 
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-
-var $data = [];
-var elements = {};
-
+$.add = function ($json) {
+	data.push($json);
+	build();
+};
+	
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 const IO = [	
@@ -21,7 +21,8 @@ const HOURS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "AM", 12, 13, 14, 15, 16, 1
 
 var el = {};
 var grid = {};
-
+var data = [];
+	
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 var section = document.createElement("section"); $.summary = section;
@@ -181,15 +182,15 @@ HOURS.forEach(function ($r, $ri) {
 	createCell( [$ri + 3, $ci++ + 2], ["Balance", $r] );
 });
 
-Object.keys(grid).forEach(function ($v) { grid[$v].textContent = "-"; });
-
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 function build () {
+
+	Object.keys(grid).forEach(function ($v) { grid[$v].textContent = "-"; });
 	
 	$calc = {};
 	
-	$data.forEach(function ($x, $i) {
+	data.forEach(function ($x, $i) {
 	
 		if (new Date().toDateString() !== $x.DateTime.toDateString()) return;
 	
