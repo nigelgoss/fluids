@@ -3,7 +3,6 @@
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 var $data = [];
-var el = {};
 var elements = {};
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
@@ -13,8 +12,14 @@ const IO = [
 	["Urine Continent", "Urine Incontinent", "Urine Catheterised", "Gastric", "Drain", "Stoma", "Other"]
 ];
 
-const HOURS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "AM", 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, "PM"]
+var COLS = {
+	"Input": ["Oral", "IV Fluids", "NG Feed", "Other"],
+	"Output": ["Urine Continent", "Urine Incontinent", "Urine Catheterised", "Gastric", "Drain", "Stoma", "Other"]
+};
 	
+const HOURS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "AM", 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, "PM"]
+
+var el = {};
 var grid = {};
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
@@ -26,136 +31,129 @@ section.style.gridTemplateColumns = "repeat(15, 1fr)";
 section.style.gridGap = "1px";
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-	
+
+var div = document.createElement("div"); section.appendChild(div);
+div.style.gridArea = "1/1/2/1";
+div.style.display = "flex";
+div.style.alignItems = "center";
+div.style.justifyContent = "center";
+
+	var button = document.createElement("button"); div.appendChild(button);
+	button.textContent = "<";
+	button.onpointerdown = function () {
+		el.inputDate.valueAsDate = new Date(el.inputDate.valueAsDate.setDate(el.inputDate.valueAsDate.getDate() - 1));
+		build();
+	};
+
+	el.buttonToday = document.createElement("button"); div.appendChild(el.buttonToday);
+	el.buttonToday.textContent = "Today";
+	el.buttonToday.onpointerdown = function () {
+		el.inputDate.valueAsDate = new Date();
+		build();
+	};
+
+	var button = document.createElement("button"); div.appendChild(button);
+	button.textContent = ">";
+	button.onpointerdown = function () {
+		el.inputDate.valueAsDate = new Date(el.inputDate.valueAsDate.setDate(el.inputDate.valueAsDate.getDate() + 1));
+		build();
+	};
+
+var div = document.createElement("div"); section.appendChild(div);
+div.style.gridArea = "2/1/3/1";
+
+	el.inputDate = document.createElement("input"); div.appendChild(el.inputDate);
+	el.inputDate.type = "date";
+
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+var div = document.createElement("div"); section.appendChild(div);
+div.style.gridArea = "1/2/2/" + (IO[0].length + 3);
+div.style.display = "flex";
+div.style.textAlign = "center";
+div.style.alignItems = "center";
+div.style.justifyContent = "center";
+div.textContent = "Input";
+
+IO[0].forEach(function ($v, $i) {
 	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "1/1/2/1";
-	div.style.display = "flex";
-	div.style.alignItems = "center";
-	div.style.justifyContent = "center";
-	
-		var button = document.createElement("button"); div.appendChild(button);
-		button.textContent = "<";
-		button.onpointerdown = function () {
-			el.inputDate.valueAsDate = new Date(el.inputDate.valueAsDate.setDate(el.inputDate.valueAsDate.getDate() - 1));
-			build();
-		};
-
-		el.buttonToday = document.createElement("button"); div.appendChild(el.buttonToday);
-		el.buttonToday.textContent = "Today";
-		el.buttonToday.onpointerdown = function () {
-			el.inputDate.valueAsDate = new Date();
-			build();
-		};
-
-		var button = document.createElement("button"); div.appendChild(button);
-		button.textContent = ">";
-		button.onpointerdown = function () {
-			el.inputDate.valueAsDate = new Date(el.inputDate.valueAsDate.setDate(el.inputDate.valueAsDate.getDate() + 1));
-			build();
-		};
-
-	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "2/1/3/1";
-
-		el.inputDate = document.createElement("input"); div.appendChild(el.inputDate);
-		el.inputDate.type = "date";
-	
-	// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-
-	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "1/2/2/" + (IO[0].length + 3);
-	div.style.display = "flex";
-	div.style.textAlign = "center";
-	div.style.alignItems = "center";
-	div.style.justifyContent = "center";
-	div.textContent = "Input";
-
-	IO[0].forEach(function ($v, $i) {
-		var div = document.createElement("div"); section.appendChild(div);
-		div.style.gridArea = "2/" + ($i + 2) +"/3/" + ($i + 3);
-		div.style.display = "flex";
-		div.style.textAlign = "center";
-		div.style.alignItems = "center";
-		div.style.justifyContent = "center";
-		div.textContent = $v;
-	});
-	
-	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "2/6/3/6";
+	div.style.gridArea = "2/" + ($i + 2) +"/3/" + ($i + 3);
 	div.style.display = "flex";
 	div.style.textAlign = "center";
 	div.style.alignItems = "center";
 	div.style.justifyContent = "center";
-	div.style.backgroundColor = "palegreen";
-	div.textContent = "Total";
-	
+	div.textContent = $v;
+});
+
+var div = document.createElement("div"); section.appendChild(div);
+div.style.gridArea = "2/6/3/6";
+div.style.display = "flex";
+div.style.textAlign = "center";
+div.style.alignItems = "center";
+div.style.justifyContent = "center";
+div.style.backgroundColor = "palegreen";
+div.textContent = "Total";
+
+var div = document.createElement("div"); section.appendChild(div);
+div.style.gridArea = "1/" + (IO[0].length + 3) + "/2/" + (IO[0].length + IO[1].length + 4);
+div.style.display = "flex";
+div.style.textAlign = "center";
+div.style.alignItems = "center";
+div.style.justifyContent = "center";
+div.textContent = "Output";
+
+IO[1].forEach(function ($v, $i) {
 	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "1/" + (IO[0].length + 3) + "/2/" + (IO[0].length + IO[1].length + 4);
+	div.style.gridArea = "2/" + (IO[0].length + 3 + $i) +"/3/" + (IO[0].length + 4 + $i);
 	div.style.display = "flex";
 	div.style.textAlign = "center";
 	div.style.alignItems = "center";
 	div.style.justifyContent = "center";
-	div.textContent = "Output";
+	div.textContent = $v;
+});
 
-	IO[1].forEach(function ($v, $i) {
-		var div = document.createElement("div"); section.appendChild(div);
-		div.style.gridArea = "2/" + (IO[0].length + 3 + $i) +"/3/" + (IO[0].length + 4 + $i);
-		div.style.display = "flex";
-		div.style.textAlign = "center";
-		div.style.alignItems = "center";
-		div.style.justifyContent = "center";
-		div.textContent = $v;
-	});
-	
+var div = document.createElement("div"); section.appendChild(div);
+div.style.gridArea = "2/" + (IO[0].length + IO[1].length + 3) + "/3/" + (IO[0].length + IO[1].length + 4);
+div.style.display = "flex";
+div.style.textAlign = "center";
+div.style.alignItems = "center";
+div.style.justifyContent = "center";
+div.style.backgroundColor = "palegreen";
+div.textContent = "Total";
+
+var div = document.createElement("div"); section.appendChild(div);
+div.style.gridArea = "1/" + (IO[0].length + IO[1].length + 4) + "/2/" + (IO[0].length + IO[1].length + 5);
+div.style.display = "flex";
+div.style.alignItems = "center";
+div.style.justifyContent = "center";
+
+	var button = document.createElement("button"); div.appendChild(button);
+	button.textContent = "+ Add";
+	button.onpointerdown = function () {
+		alert(1);
+	};
+
+var div = document.createElement("div"); section.appendChild(div);
+div.style.gridArea = "2/" + (IO[0].length + IO[1].length + 4) + "/3/" + (IO[0].length + IO[1].length + 5);
+div.style.display = "flex";
+div.style.textAlign = "center";
+div.style.alignItems = "center";
+div.style.justifyContent = "center";
+div.style.backgroundColor = "lightblue";
+div.textContent = "Balance";
+
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+HOURS.forEach(function ($v, $i) {
 	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "2/" + (IO[0].length + IO[1].length + 3) + "/3/" + (IO[0].length + IO[1].length + 4);
+	div.style.gridArea = ($i+3) + "/1/" + ($i+4) +"/2";
 	div.style.display = "flex";
 	div.style.textAlign = "center";
 	div.style.alignItems = "center";
 	div.style.justifyContent = "center";
-	div.style.backgroundColor = "palegreen";
-	div.textContent = "Total";
-
-	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "1/" + (IO[0].length + IO[1].length + 4) + "/2/" + (IO[0].length + IO[1].length + 5);
-	div.style.display = "flex";
-	div.style.alignItems = "center";
-	div.style.justifyContent = "center";
-	
-		var button = document.createElement("button"); div.appendChild(button);
-		button.textContent = "+ Add";
-		button.onpointerdown = function () {
-			alert(1);
-		};
-	
-	var div = document.createElement("div"); section.appendChild(div);
-	div.style.gridArea = "2/" + (IO[0].length + IO[1].length + 4) + "/3/" + (IO[0].length + IO[1].length + 5);
-	div.style.display = "flex";
-	div.style.textAlign = "center";
-	div.style.alignItems = "center";
-	div.style.justifyContent = "center";
-	div.style.backgroundColor = "lightblue";
-	div.textContent = "Balance";
-
-	// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-	
-	HOURS.forEach(function ($v, $i) {
-		var div = document.createElement("div"); section.appendChild(div);
-		div.style.gridArea = ($i+3) + "/1/" + ($i+4) +"/2";
-		div.style.display = "flex";
-		div.style.textAlign = "center";
-		div.style.alignItems = "center";
-		div.style.justifyContent = "center";
-		if (["AM", "PM"].indexOf($v) > -1) div.style.backgroundColor = "yellow";
-		div.textContent = $v;
-	});
-	
-var COLS = {
-	"Input": ["Oral", "IV Fluids", "NG Feed", "Other"],
-	"Output": ["Urine Continent", "Urine Incontinent", "Urine Catheterised", "Gastric", "Drain", "Stoma", "Other"]
-};
-
-var ROWS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "AM", 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, "PM"];
+	if (["AM", "PM"].indexOf($v) > -1) div.style.backgroundColor = "yellow";
+	div.textContent = $v;
+});
 
 function createCell ($rc, $id) {
 	$id = "|" + $id.join("|").replace(/ /g, "") + "|";
@@ -167,8 +165,8 @@ function createCell ($rc, $id) {
 	if ($id.indexOf("|Balance|") > -1) div.style.backgroundColor = "lightblue";
 	if ($id.indexOf("|AM|") > -1 || $id.indexOf("|PM|") > -1) div.style.backgroundColor = "yellow";
 };
-	
-ROWS.forEach(function ($r, $ri) {
+
+HOURS.forEach(function ($r, $ri) {
 	var $ci = 0;
 	Object.keys(COLS).forEach(function ($io) {
 		COLS[$io].forEach(function ($v) {
@@ -179,8 +177,8 @@ ROWS.forEach(function ($r, $ri) {
 	createCell( [$ri + 3, $ci++ + 2], ["Balance", $r] );
 });
 
-Object.keys(grid).forEach(function ($v) { grid[$v].textContent = "X"; });
-	
+Object.keys(grid).forEach(function ($v) { grid[$v].textContent = "-"; });
+
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 function build () {
