@@ -63,6 +63,7 @@ div.style.gridArea = "2/1/3/1";
 
 	el.inputDate = document.createElement("input"); div.appendChild(el.inputDate);
 	el.inputDate.type = "date";
+	el.inputDate.valueAsDate = new Date();
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
@@ -191,31 +192,22 @@ function build () {
 	
 		if ($v.DT.substring(0, 10) !== el.inputDate.value) return;
 		
-		var lbl = "|" + [$v.IO, $v.Type, parseInt($v.DT.substring(11, 13))].join("|") + "|";
-		if (calc[lbl] === undefined) calc[lbl] = 0;
-		calc[lbl] += $v.Value;
+		[
+			[$v.IO, $v.Type, parseInt($v.DT.substring(11, 13))],
+			[$v.IO, "Total", parseInt($v.DT.substring(11, 13))],
+			["Balance", parseInt($v.DT.substring(11, 13))],
+			[$v.IO, $v.Type, ["AM", "PM"][parseInt($v.DT.substring(11, 13)) % 12]],
+			[$v.IO, "Total", ["AM", "PM"][parseInt($v.DT.substring(11, 13)) % 12]],
+			["Balance", ["AM", "PM"][parseInt($v.DT.substring(11, 13)) % 12]]
+		].forEach(function ($x) {
+			var lbl = "|" + $x.join("|") + "|";
+			if (calc[lbl] === undefined) calc[lbl] = 0;
+			calc[lbl] += $v.Value;
+		});
 		
 	});
-	
-	Object.keys(grid).forEach(function ($v) { grid[$v].textContent = calc[$v] ?? "??"; });
-	
-		/*
-		[
-			[$x.Direction, $x.Type, $x.DateTime.getHours()].join("|"),
-			[$x.Direction, "Total", $x.DateTime.getHours()].join("|"),
-			["Balance", $x.DateTime.getHours()].join("|"),
-			[$x.Direction, $x.Type, (($x.DateTime.getHours() <= 11) ? "AM" : "PM")].join("|"),
-			[$x.Direction, "Total", (($x.DateTime.getHours() <= 11) ? "AM" : "PM")].join("|"),
-			["Balance", (($x.DateTime.getHours() <= 11) ? "AM" : "PM")].join("|"),
-		].forEach(function ($v) {
-			if ($calc[$v] === undefined) $calc[$v] = 0;
-			$calc[$v] += $x.Volume * (($x.Direction == "Input") ? 1 : -1);
-		});
-		*/
-	
-};
-	
-el.buttonToday.onpointerdown();
+
+}; build();
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
