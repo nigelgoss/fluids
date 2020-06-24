@@ -129,7 +129,7 @@ div.style.justifyContent = "center";
 	var button = document.createElement("button"); div.appendChild(button);
 	button.textContent = "+ Add";
 	button.onpointerdown = function () {
-		data.push(JSON.parse(prompt("Data")));
+		data.push(JSON.parse(prompt('{"DT":"2020-06-24 11:00", "IO":"Input", "Type":"Oral", "Value":50}')));
 		build();
 	};
 
