@@ -6,10 +6,7 @@
 		
 		<script>
 			var $ = {};
-			window.addEventListener("load", function () {
-				var el = document.querySelector("main")
-				el.parentNode.replaceChild($.summary, el);
-			});
+			window.addEventListener("load", function () { $.summary(); });
 		</script>
 		
 		<script src="summary.js" defer></script>
@@ -18,7 +15,9 @@
 	
 	<body style="margin:0; flex:1 1 auto; display:flex; flex-direction:column;">
 	
-		<div style="flex:0 0 70px; background-color:#005EB8;"></div>
+		<div style="flex:0 0 70px; background-color:#005EB8;">
+			<button onpointerdown="$.summary();">< Back</button>
+		</div>
 		
 		<main style="flex:1 1 auto; display:flex; overflow:auto;"></main>
 		
