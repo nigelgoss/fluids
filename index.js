@@ -60,6 +60,7 @@ section.style.gridGap = "1px";
 var style = document.createElement("style"); section.appendChild(style);
 style.textContent = [
 	"main button { padding:10px; border-radius:10px; margin:1px; }",
+	"main div { border:1px solid #CCCCCC; }",
 ].join("\n");
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
@@ -212,7 +213,6 @@ function createCell ($rc, $id) {
 	var div = document.createElement("div"); section.appendChild(div);
 	grid[id] = div;
 	div.style.gridArea = [$rc[0], $rc[1], $rc[0]+1, $rc[1]+1].join("/");
-	div.style.border = "1px solid #CCCCCC";
 	div.style.display = "flex";
 	div.style.textAlign = "center";
 	div.style.alignItems = "center";
