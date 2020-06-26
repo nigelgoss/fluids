@@ -426,6 +426,7 @@ var td = document.createElement("td"); tr.appendChild(td); td.textContent = "Vol
 var td = document.createElement("td"); tr.appendChild(td);
 
 	var volume = document.createElement("input"); td.appendChild(volume);
+	td.appendChild(document.createTextNode(" ml"));
 
 var tbody = document.createElement("tbody"); table.appendChild(tbody);
 var tr = document.createElement("tr"); tbody.appendChild(tr);
