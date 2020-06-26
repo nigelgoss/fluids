@@ -320,7 +320,8 @@ function build () {
 		var td = document.createElement("td"); tr.appendChild(td); td.style.padding = "20px"; td.textContent = $v.Username;
 		var td = document.createElement("td"); tr.appendChild(td); td.style.padding = "20px"; 
 			var button = document.createElement("button"); td.appendChild(button);
-			button.textContent = "Delete";
+			button.style.fontFamily = "FASolid";
+			button.textContent = "";
 			button.onpointerdown = function () { alert($v.Id); };
 		if ($v.Comment !== null) {
 			td.rowSpan = 2;
