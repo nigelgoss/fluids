@@ -435,6 +435,8 @@ var td = document.createElement("td"); tr.appendChild(td);
 var td = document.createElement("td"); tr.appendChild(td);
 
 	var button = document.createElement("button"); td.appendChild(button);
+	button.style.width = "100%";
+	button.style.padding = "10px";
 	var span = document.createElement("span"); button.appendChild(span); span.style.fontFamily = "FARegular"; span.textContent = "";
 	button.appendChild(document.createTextNode(" Save"));
 	button.onpointerdown = function () {
