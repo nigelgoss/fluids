@@ -428,6 +428,9 @@ var td = document.createElement("td"); tr.appendChild(td); td.textContent = "Com
 var td = document.createElement("td"); tr.appendChild(td);
 
 	var comment = document.createElement("textarea"); td.appendChild(comment);
+	comment.style.width = "100%";
+	comment.style.height = "100px";
+	comment.style.resize = "none";
 
 var tbody = document.createElement("tbody"); table.appendChild(tbody);
 var tr = document.createElement("tr"); tbody.appendChild(tr);
