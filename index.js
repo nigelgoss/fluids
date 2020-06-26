@@ -71,7 +71,8 @@ div.style.alignItems = "center";
 div.style.justifyContent = "center";
 
 	var button = document.createElement("button"); div.appendChild(button);
-	button.textContent = "<";
+	button.style.fontFamily = "FASolid";
+	button.textContent = "";
 	button.onpointerdown = function () {
 		el.inputDate.valueAsDate = new Date(el.inputDate.valueAsDate.setDate(el.inputDate.valueAsDate.getDate() - 1));
 		build();
@@ -86,7 +87,8 @@ div.style.justifyContent = "center";
 	};
 
 	var button = document.createElement("button"); div.appendChild(button);
-	button.textContent = ">";
+	button.style.fontFamily = "FASolid";
+	button.textContent = "";
 	button.onpointerdown = function () {
 		el.inputDate.valueAsDate = new Date(el.inputDate.valueAsDate.setDate(el.inputDate.valueAsDate.getDate() + 1));
 		build();
