@@ -170,11 +170,13 @@ div.style.justifyContent = "center";
 	button.onpointerdown = function () { $.settings(); };
 	
 	var button = document.createElement("button"); div.appendChild(button);
-	button.textContent = "= List";
+	button.style.fontFamily = "FASolid";
+	button.textContent = "";
 	button.onpointerdown = function () { $.list(); };
 
 	var button = document.createElement("button"); div.appendChild(button);
-	button.textContent = "+ Add";
+	button.style.fontFamily = "FASolid";
+	button.textContent = "";
 	button.onpointerdown = function () { $.add(); };
 
 var div = document.createElement("div"); section.appendChild(div);
