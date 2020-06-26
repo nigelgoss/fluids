@@ -372,6 +372,15 @@ $.add = function ($in) {
 var selectedIO = null;
 
 var section = document.createElement("main");
+	
+var style = document.createElement("style"); section.appendChild(style);
+style.textContent = [
+	"main tbody + tbody { border-top:1px solid #768692; }",
+	"main tbody tr:first-of-type td { padding-top:15px; }",
+	"main tbody tr:last-of-type td { padding-bottom:15px; }",
+	"main tr+tr  { border-top:1px solid #E8EDEE; }",
+	"main td { padding:5px; }",
+].join("\n");
 
 var table = document.createElement("table"); section.appendChild(table);
 var tbody = document.createElement("tbody"); table.appendChild(tbody);
