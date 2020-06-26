@@ -78,7 +78,8 @@ div.style.justifyContent = "center";
 	};
 
 	el.buttonToday = document.createElement("button"); div.appendChild(el.buttonToday);
-	el.buttonToday.textContent = "Today";
+	el.buttonToday.style.fontFamily = "FARegular";
+	el.buttonToday.textContent = "";
 	el.buttonToday.onpointerdown = function () {
 		el.inputDate.valueAsDate = new Date();
 		build();
