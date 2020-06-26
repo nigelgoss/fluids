@@ -197,8 +197,12 @@ ROWS.forEach(function ($v, $i) {
 	div.style.textAlign = "center";
 	div.style.alignItems = "center";
 	div.style.justifyContent = "center";
-	if (["AM", "PM"].indexOf($v) > -1) div.style.backgroundColor = "#fdf593";
 	div.textContent = $v;
+	if (["AM", "PM"].indexOf($v) > -1) {
+		div.style.backgroundColor = "#fdf593";
+	} else {
+		div.textContent += ":00";
+	};
 });
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
