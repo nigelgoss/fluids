@@ -162,7 +162,8 @@ div.style.alignItems = "center";
 div.style.justifyContent = "center";
 
 	var button = document.createElement("button"); div.appendChild(button);
-	button.textContent = "O Settings";
+	button.style.fontFamily = "FASolid";
+	button.textContent = "";
 	button.onpointerdown = function () { $.settings(); };
 	
 	var button = document.createElement("button"); div.appendChild(button);
