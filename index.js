@@ -383,8 +383,10 @@ style.textContent = [
 ].join("\n");
 
 var table = document.createElement("table"); section.appendChild(table);
+table.style.borderCollapse = "collapse";
+table.style.width = "100%";
+	
 var tbody = document.createElement("tbody"); table.appendChild(tbody);
-
 var tr = document.createElement("tr"); tbody.appendChild(tr);
 var td = document.createElement("td"); tr.appendChild(td); td.textContent = "Date Time";
 var td = document.createElement("td"); tr.appendChild(td);
@@ -392,6 +394,7 @@ var td = document.createElement("td"); tr.appendChild(td);
 	var inputDateTime = document.createElement("input"); td.appendChild(inputDateTime);
 	inputDateTime.type = "datetime-local";
 
+var tbody = document.createElement("tbody"); table.appendChild(tbody);
 var tr = document.createElement("tr"); tbody.appendChild(tr);
 var td = document.createElement("td"); tr.appendChild(td); td.textContent = "Type";
 var td = document.createElement("td"); tr.appendChild(td);
@@ -412,12 +415,14 @@ var td = document.createElement("td"); tr.appendChild(td);
 		
 	});
 
+var tbody = document.createElement("tbody"); table.appendChild(tbody);
 var tr = document.createElement("tr"); tbody.appendChild(tr);
 var td = document.createElement("td"); tr.appendChild(td); td.textContent = "Volume";
 var td = document.createElement("td"); tr.appendChild(td);
 
 	var volume = document.createElement("input"); td.appendChild(volume);
-	
+
+var tbody = document.createElement("tbody"); table.appendChild(tbody);
 var tr = document.createElement("tr"); tbody.appendChild(tr);
 var td = document.createElement("td"); tr.appendChild(td); td.textContent = "Comment";
 var td = document.createElement("td"); tr.appendChild(td);
