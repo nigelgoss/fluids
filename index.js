@@ -429,6 +429,7 @@ var td = document.createElement("td"); tr.appendChild(td);
 
 	var comment = document.createElement("textarea"); td.appendChild(comment);
 
+var tbody = document.createElement("tbody"); table.appendChild(tbody);
 var tr = document.createElement("tr"); tbody.appendChild(tr);
 var td = document.createElement("td"); tr.appendChild(td);
 var td = document.createElement("td"); tr.appendChild(td);
