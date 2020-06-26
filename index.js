@@ -334,12 +334,12 @@ var comment = document.createElement("textarea"); section.appendChild(comment);
 var button = document.createElement("button"); section.appendChild(button);
 button.textContent = "+ Add";
 button.onpointerdown = function () {
-	data.push({
+	data.unshift({
 		"Id":0,
 		"DT": inputDateTime.value,
 		"IO": selected[0],
 		"Type": selected[1],
-		"Volume": parseInt(volume.value),
+		"Volume": parseInt(volume.value) * ((selected[0] === "Output") ? -1 : 1),
 		"Comment": (comment.value === "") ? null : comment.value,
 		"Username":"gosn1fm"
 	});
